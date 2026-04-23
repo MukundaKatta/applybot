@@ -4,29 +4,46 @@
 
 Fill out your profile once. Our AI finds and applies to every job that fits, with tailored cover letters included.
 
-## What it does
+**Status:** v0 skeleton — landing page + profile/apply demo route. Real AI submission not yet wired.
 
-- **Auto-fills every application** — Ashby, Greenhouse, Lever, Workday, Taleo. Submitted while you sleep.
-- **Personalized cover letters** — Tailored to the job, the company, and your unique background.
-- **Response tracking** — See which applications got replies. Focus your follow-ups where they matter.
+**Landing:** https://applybot.vercel.app
 
-## Why
+---
 
-Career. Part of a 20-product exploration of high-demand consumer and SMB markets.
+## Stack
 
-## Status
+| Layer | Choice |
+|---|---|
+| Framework | Next.js 15 (App Router) |
+| Language | TypeScript (strict) |
+| Styling | Tailwind v4 |
+| Fonts | Inter via `next/font/google` |
+| Hosting | Vercel (zero config) |
+| Waitlist | https://waitlist-api-sigma.vercel.app |
 
-Landing page live. Product in planning.
+## Run locally
 
-- **Live**: https://mukundakatta.github.io/applybot/
+```bash
+pnpm install
+pnpm dev
+```
 
-## Stack (when built)
+Open http://localhost:3000.
 
-- Next.js 16 (App Router)
-- Supabase for auth + data
-- Stripe for payments
-- Deployed on Vercel
+## Deploy
 
-## Local preview
+Push to `main` — Vercel picks it up automatically. No environment variables required.
 
-Just open `index.html` in a browser — it is a static landing page with the Tailwind CDN.
+## Routes
+
+| Route | Description |
+|---|---|
+| `/` | Landing page (original copy + design preserved) |
+| `/try` | v0 apply form — name, email, top 3 skills → mocked application status list |
+| `/api/waitlist` | `POST { email }` → forwards to waitlist-api-sigma |
+
+## What's next
+
+- Wire real AI application submission behind `/try`
+- Integrate ATS connectors (Ashby, Greenhouse, Lever, Workday, Taleo)
+- Auth + per-user application tracking dashboard
